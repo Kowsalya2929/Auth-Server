@@ -2,13 +2,18 @@ import React from 'react'
 import { Box, Button, Container, Paper, TextField, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 
-const Login = () => {
+const Register = () => {
   return (
     <Container maxWidth='sm'>
     <Paper elevation={5} sx={{p:3,my:5}}>
       <Typography variant='h6' color='primary' align='center'>
-        Login
+        Register
       </Typography>
+      <TextField 
+        label="Username"
+        fullWidth
+        sx={{my:1}}
+      />
       <TextField 
         label="Email"
         type='email'
@@ -21,19 +26,14 @@ const Login = () => {
         fullWidth
         sx={{my:1}}
       />
-      <Box sx={{textAlign:'right',my:1}}>
-        <Typography variant='subtitle2' component={Link} color='primary' to={'/resetPassword'} sx={{textDecoration:'none'}}>
-          forget password?
-        </Typography>
-      </Box>
       <Button variant='contained' fullWidth sx={{my:1}}>
         Sign In
       </Button>
       <Box sx={{textAlign:'center',my:1}}>
         <Typography variant='subtitle2' >
-        Don't have an account?{" "}
-        <Typography variant='subtitle2' component={Link} color='primary' to={'/register'} sx={{textDecoration:'none'}}>
-          Sign Up
+        Already have an account?{" "}
+        <Typography variant='subtitle2' component={Link} color='primary' to={'/login'} sx={{textDecoration:'none'}}>
+          Sign In
         </Typography>
         </Typography>
       </Box>
@@ -42,4 +42,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Register
