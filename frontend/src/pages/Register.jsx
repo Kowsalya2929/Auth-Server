@@ -1,10 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Box, Button, Container, Paper, TextField, Typography } from '@mui/material'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import useAuthStore from '../store/auth.js'
+import { toast, ToastContainer } from 'react-toastify'
 
 const Register = () => {
+  const [newUser,setNewUser] = useState({name:"",email:"",password:""})
+  const {postRegister} = useAuthStore()
+  const navigate = useNavigate()
+  const handleSignUp = async(newUser)=>{
+    const {success,message} = await postRegister(newUser)
+    if(!success){
+      toast.error(message,{position: 'top-right'})
+    }else{
+      toast.success(message,{position:'top-right'})
+      setTimeout(() => {
+        navigate('/')
+      }, 3000);
+      setNewUser({name:"",email:"",password:""})
+    }
+  }
   return (
     <Container maxWidth='sm'>
+      <ToastContainer />
     <Paper elevation={5} sx={{p:3,my:5}}>
       <Typography variant='h6' color='primary' align='center'>
         Register
@@ -13,21 +31,27 @@ const Register = () => {
         label="Username"
         fullWidth
         sx={{my:1}}
+        value={newUser?.name}
+        onChange={(e)=>setNewUser({...newUser,name: e.target.value})}
       />
       <TextField 
         label="Email"
         type='email'
         fullWidth
         sx={{my:1}}
+        value={newUser?.email}
+        onChange={(e)=>setNewUser({...newUser,email: e.target.value})}
       />
       <TextField 
         label="Password"
         type='password'
         fullWidth
         sx={{my:1}}
+        value={newUser?.password}
+        onChange={(e)=>setNewUser({...newUser,password: e.target.value})}
       />
-      <Button variant='contained' fullWidth sx={{my:1}}>
-        Sign In
+      <Button onClick={()=>handleSignUp(newUser)} variant='contained' fullWidth sx={{my:1}}>
+        Sign Up
       </Button>
       <Box sx={{textAlign:'center',my:1}}>
         <Typography variant='subtitle2' >

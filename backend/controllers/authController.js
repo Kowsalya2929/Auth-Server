@@ -29,7 +29,7 @@ exports.postRegister=async(req,res)=>{
             text: `Welcome to KowsiAmazon website, Your account has been created with email id : ${email}`
         }
         await transporter.sendMail(mailOptions)
-        res.status(200).json({success: true, message: 'register posted'})
+        res.status(200).json({success: true, message: 'register posted',data: userRegister})
     } catch (err) {
         console.log(`register post err: ${err.message}`)
         res.status(500).json({success: false,message: 'internal server error'})
