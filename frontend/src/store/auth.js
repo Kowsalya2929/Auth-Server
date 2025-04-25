@@ -62,6 +62,81 @@ const useAuthStore = create((set)=>({
             return {success: false,message: data.message}
         }
     },
+    postSendVerifyOtp: async()=>{
+        try{
+            const res = await fetch('/api/auth/send-verify-otp',{
+                method: 'POST',
+                headers: {
+                    'Content-Type':'application/json'
+                }
+            })
+            const data = await res.json()
+            if(!res.ok || !data.success){
+                return {success: false,message: data.message}
+            }
+            return {success: true,message: data.message}
+        }catch(err){
+            console.log(`Send verify otp error : ${err.message}`)
+            return {success: false,message: data.message}
+        }
+    },
+    postVerifyOTP: async(otp)=>{
+        try{
+            const res = await fetch('/api/auth/verify-account',{
+                method: 'POST',
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify({otp})
+            })
+            const data = await res.json()
+            if(!res.ok || !data.success){
+                return {success: false,message: data.message}
+            }
+            return {success: true,message: data.message}
+        }catch(err){
+            console.log(`verify otp error : ${err.message}`)
+            return {success: false,message: data.message}
+        }
+    },
+    postSendResetVerifyOtp: async(email)=>{
+        try{
+            const res = await fetch('/api/auth/send-reset-otp',{
+                method: 'POST',
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify({email})
+            })
+            const data = await res.json()
+            if(!res.ok || !data.success){
+                return {success: false,message: data.message}
+            }
+            return {success: true,message: data.message}
+        }catch(err){
+            console.log(`Send reset verify otp error : ${err.message}`)
+            return {success: false,message: data.message}
+        }
+    },
+    postResetVerifyOTP: async(resetPassword)=>{
+        try{
+            const res = await fetch('/api/auth/reset-password',{
+                method: 'POST',
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify(resetPassword)
+            })
+            const data = await res.json()
+            if(!res.ok || !data.success){
+                return {success: false,message: data.message}
+            }
+            return {success: true,message: data.message}
+        }catch(err){
+            console.log(`Reset verify otp error : ${err.message}`)
+            return {success: false,message: data.message}
+        }
+    }
 }))
 
 export default useAuthStore;

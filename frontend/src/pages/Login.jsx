@@ -14,6 +14,7 @@ const Login = () => {
       toast.error(message,{position: 'top-right'})
     }else{
       toast.success(message,{position:'top-right'})
+      setOldUser({email:"",password:""})
       setTimeout(() => {
         navigate('/')
       }, 3000);
