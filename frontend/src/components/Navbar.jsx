@@ -10,8 +10,10 @@ import {
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { AccountCircle } from '@mui/icons-material';
+import useUserStore from '../store/user.js'
 
 const Navbar = () => {
+  const {users} = useUserStore()
   const [anchorEl,setAnchorEl] = useState(null)
   const menuOpen = Boolean(anchorEl)
   const handleMenuOpen = (e)=>{
@@ -56,7 +58,8 @@ const Navbar = () => {
           anchorOrigin={{vertical:'bottom',horizontal:'right'}}
           transformOrigin={{vertical:'top',horizontal:'right'}}
         >
-          <MenuItem component={Link} to={'/sendEmailVerify'} onClick={handleMenuClose}>Verify Email</MenuItem>
+          {users.isAccountVerified ? 
+           <></> : <MenuItem component={Link} to={'/sendEmailVerify'} onClick={handleMenuClose}>Verify Email</MenuItem> }
           <MenuItem component={Link} to={'/logout'} onClick={handleMenuClose}>Logout</MenuItem>
         </Menu>  
       </Toolbar>

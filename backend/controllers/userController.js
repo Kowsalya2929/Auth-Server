@@ -10,7 +10,7 @@ exports.getUserData = async(req,res)=>{
         res.status(200)
         .json({
             success: true,
-            userData: {
+            data: {
                 name: user.name,
                 isAccountVerified: user.isAccountVerified,
             }

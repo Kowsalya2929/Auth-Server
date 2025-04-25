@@ -1,10 +1,12 @@
 import React from 'react'
 import { Button, Container, Paper, Typography } from '@mui/material'
-import useAuthStore from '../store/auth'
+import useAuthStore from '../store/auth.js'
 import { toast, ToastContainer } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
+import useUserStore from '../store/user.js'
 
 const Logout = () => {
+  const {logoutData} = useUserStore()
   const {postLogout} = useAuthStore()
   const navigate = useNavigate()
   const handleLogout = async()=>{
@@ -13,6 +15,7 @@ const Logout = () => {
       toast.error(message,{position: 'top-right'})
     }else{
       toast.success(message,{position: 'top-right'})
+      logoutData()
       setTimeout(() => {
         navigate('/')
       }, 3000);
