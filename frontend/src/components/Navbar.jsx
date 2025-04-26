@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {
   AppBar,
+  Box,
   Button,
   IconButton,
   Menu,
@@ -59,7 +60,7 @@ const Navbar = () => {
           transformOrigin={{vertical:'top',horizontal:'right'}}
         >
           {users.isAccountVerified ? 
-           <></> : <MenuItem component={Link} to={'/sendEmailVerify'} onClick={handleMenuClose}>Verify Email</MenuItem> }
+           <Box></Box> : <MenuItem component={Link} to={'/sendEmailVerify'} onClick={handleMenuClose}>Verify Email</MenuItem> }
           <MenuItem component={Link} to={'/logout'} onClick={handleMenuClose}>Logout</MenuItem>
         </Menu>  
       </Toolbar>

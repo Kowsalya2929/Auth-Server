@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, Container, Paper, TextField, Typography } from '@mui/material'
 import { toast, ToastContainer } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
-import useAuthStore from '../store/auth'
+import useAuthStore from '../store/auth.js'
 
 const VerifyEmail = () => {
   const [otp,setOtp] = useState("")

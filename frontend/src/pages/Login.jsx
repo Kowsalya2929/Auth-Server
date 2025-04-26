@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Box, Button, Container, Paper, TextField, Typography } from '@mui/material'
 import { Link, useNavigate } from 'react-router-dom'
-import useAuthStore from '../store/auth'
+import useAuthStore from '../store/auth.js'
 import { toast, ToastContainer } from 'react-toastify'
 
 const Login = () => {

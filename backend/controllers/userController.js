@@ -1,6 +1,6 @@
-const User = require('../models/authModel.js')
+import User from '../models/authModel.js'
 
-exports.getUserData = async(req,res)=>{
+export const getUserData = async(req,res)=>{
     try{
         const userId = req.user.id;
         const user = await User.findById(userId)

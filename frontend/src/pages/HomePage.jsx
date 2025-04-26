@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Container, Typography } from '@mui/material'
-import useUserStore from '../store/user'
+import useUserStore from '../store/user.js'
 
 const HomePage = () => {
   const {users,getAllData} = useUserStore()

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Container, Paper, TextField, Typography } from '@mui/material'
-import useAuthStore from '../store/auth'
+import useAuthStore from '../store/auth.js'
 import { toast, ToastContainer } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 

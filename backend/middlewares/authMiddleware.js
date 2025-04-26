@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken')
+import jwt from 'jsonwebtoken'
 
 const userMiddleware = async(req,res,next)=>{
     try{
@@ -7,11 +7,7 @@ const userMiddleware = async(req,res,next)=>{
             return res.status(400).json({success: false,message: 'Not Authorized. Login Again'})
         }
         const tokenDecode = jwt.verify(token,process.env.JWT_SECRET_KEY)
-        if(tokenDecode.id){
-            req.user = { id: tokenDecode.id };
-        }else{
-            return res.status(400).json({success: false,message: 'Not Authorized. Login Again'})
-        }
+        req.user = { id: tokenDecode.id };    
         next()
     }catch(err){
         console.log(`User middelware error : ${err.message}`)
@@ -19,4 +15,4 @@ const userMiddleware = async(req,res,next)=>{
     }
 }  
 
-module.exports = userMiddleware;
+export default userMiddleware;
