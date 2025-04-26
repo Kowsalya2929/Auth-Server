@@ -1,12 +1,12 @@
 {
-  "name": "backend",
+  "name": "server",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd frontend && npm install && npm run build",
-    "dev": "nodemon backend/server.js",
-    "start": "node backend/server.js"
+    "build": "cd client && npm install && npm run build",
+    "dev": "nodemon server/server.js",
+    "start": "node server/server.js"
   },
   "type": "module",
   "keywords": [],
